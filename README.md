@@ -103,7 +103,7 @@ Ziel der Stunde war es, die bereits funktionstüchtige Temperaturmesseinheit zu 
 
 ### **app.c**
 
-```
+```C
   24 void app_init (void) {
   25   memset((void *)&app, 0, sizeof(app));
   26   
@@ -129,7 +129,7 @@ Ziel der Stunde war es, die bereits funktionstüchtige Temperaturmesseinheit zu 
   
 
 
-```
+```C
   39  uint16_t app_inc16BitCount (uint16_t cnt) {
   40     // sys_setLed(1);
   41     return cnt == 0xffff ? cnt : cnt + 1;
@@ -138,7 +138,7 @@ Ziel der Stunde war es, die bereits funktionstüchtige Temperaturmesseinheit zu 
 **Counter:** 
 Ist der Wert 0xffff gibt er cnt zurück, ansonsten cnt + 1
 
-```
+```C
   44 uint8_t hex2int (char h) {
   45     if (h >= '0' && h <= '9') {
   46         return h - '0';
@@ -151,7 +151,7 @@ Ist der Wert 0xffff gibt er cnt zurück, ansonsten cnt + 1
 ```
 Kontrolle, ob der Wert ein Hexwert ist. ( 0 - F )  
 Funktion zum Umwandeln von Hex in Integer, wenn h zwischen 0 und 9 liegt springt man in das if
-```
+```C
   54 uint8_t app_handleModbusRequest () {
      
   57     // Check if valid modbus frame
@@ -174,7 +174,7 @@ Funktion zum Umwandeln von Hex in Integer, wenn h zwischen 0 und 9 liegt springt
 Verwendung der Variablen aus der Struktur
 Kontrolle, ob beim Übertragen ein Fehler passiert ist. Es wird somit kontrolliert ob es dem Frame des ASCII enspricht. (Startbit, Stopbit...)
   
-```
+```C
   73     uint8_t lrc = 0;
   74     for (uint8_t i = 1; i < (size - 4); i++) {
   75         lrc += b[i];
@@ -190,7 +190,7 @@ Kontrolle, ob beim Übertragen ein Fehler passiert ist. Es wird somit kontrollie
 **Kontrolle LRC**  
 
 Alle Werte, angefangen beim Startbit werden in der for Schleife gezählt. Anschließend wird das Zweierkompliment der Zahl gebildet und gespeichert. Danach wird der Wert mit dem LRC mit dem Frame verglichen.
-```
+```C
   84     uint8_t i, j;
   85     for (i = 1, j = 0; i < (size - 4); i += 2, j++ ) {
   86         uint8_t hn = hex2int(b[i]);
@@ -210,7 +210,7 @@ Sollten HighnNible oder LowNible 0xff sein, wird mit `return 8` der Fehler gezei
 
 
 
-```
+```C
  144 void app_handleUartByte (char c) {
  145     if (c == ':') {
  146         if (app.bufIndex > 0) {
@@ -245,7 +245,7 @@ Zuerst wird geprüft ob das ertse ankommende Byte ein `Startbyte :` ist. Ist die
 Wenn im Buffer bereits ein Startbyte : vorhanden ist, darf kein Zweites innerhalb der Request geschrieben werden, da dies sonst zu Fehlern führen könnte. Falls ein solcher Fehler auftritt, sollte in einer Funktion ein ErrorCount hochgezählt werden
 Tritt beim Beenden der Request mit \n ein Fehler auftritt, so soll auch der ErrorCount hochgezählt werden.
 Ist nach dem Übertragen der ErrorCount größer als 0, so soll die Anzahl der Fehler ausgegeben werden
-```
+```C
  171 void app_main (void) {
  172     
  173     ADCSRA |= (1 << ADSC);
@@ -299,7 +299,7 @@ reale Messung bei 22°C -> ADCH=88
   ADCH<=88 -> MBR = k1 * ADCH + d1 + o1
 ADCH>88  -> MBR = k2 * ADCH + d2 + o2
 
-```
+```C
  223 void app_task_1ms (void) {
  224     static uint16_t oldErrCnt = 0;
  225     static uint16_t timer = 0;
@@ -324,7 +324,7 @@ Diese LED sollte aber nicht dauerhaft leuchten, da man sonst nur den ersten Fehl
 
 
 Struktur:
-```
+```C
    6 struct App
    7 {
    8   uint8_t flags_u8;
