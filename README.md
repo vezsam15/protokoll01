@@ -39,9 +39,7 @@ Rein textuelle byteweise Übertragung von Daten.
 
 #### **Protokollaufbau:**
 
-| First Header  | Second Header | Funktion | Daten |LR - Check | Ende
-| ------------- | ------------- |
-| 1 Zeichen (:) | 2 Zeichen  | 2 Zeichen | n Zeichen | 2 Zeichen |2 Zeichen (CRLF)
+![](http://4.bp.blogspot.com/-ANsoUFQoxr4/Vk919TXOV6I/AAAAAAAACs4/FjL86tlqVok/s1600/MODBUS_RTU_ASCII.png)
 
 Im ASCII-Modus beginnen Nachrichten mit einem vorangestellten Doppelpunkt, das Ende der Nachricht wird durch die Zeichenfolge Carriage return – Line feed (CRLF) markiert.
 
@@ -64,7 +62,6 @@ Die ersten zwei Bytes enthalten zwei ASCII-Zeichen, die die Adresse des Empfäng
     Ein Hold-Register ist ein 16-Bit Wert der gelesen und beschrieben werden kann.
     Beispiele: PWM-Einheit, DAC, ...
 
-![Datenmodell](https://lms.at/dotlrn/classes/htl_elektrotechnik/610437.4AHME_LA1SX.18_19/xolrn/download/file/2148F16AC6F2E.symlink/038028026F2A2/590CCAAE32846/en:C28C6FCA82C8B/modbus_addressing_model_png)
 
 #### **Beispiel:**
  
@@ -81,7 +78,7 @@ Jedes Modbus-Gerät hat eine eindeutige Adresse im Bereich 1 bis 247. Die Adress
 
 `04` = **Read Input Register**    
 
-![enter image description here](https://www.picotech.com/images/uploads/library/topics/_med/modbus-function-codes-examples.png)
+![](https://www.picotech.com/images/uploads/library/topics/_med/modbus-function-codes-examples.png)
 
 `0000`= **Inputregister 1 für die Temperatur**  
 
