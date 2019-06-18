@@ -1,13 +1,18 @@
 ## Protokoll 5
 
-**Name:** Sarah Vezonik
-**Datum, Ort:** 04. Juni 2019, Kaindorf
-**Gruppe:** 3
-**Anwesend:** Vezonik, Vollmaier, Wegl, Wesonig, Winter M., Winter T.;
+**Name:** Sarah Vezonik  
+
+**Datum, Ort:** 04. Juni 2019, Kaindorf  
+
+**Gruppe:** 3  
+
+**Anwesend:** Vezonik, Vollmaier, Wegl, Wesonig, Winter M., Winter T.;  
+
 
 
 ----------
-###**Inhaltsverzeichnis** 
+### **Inhaltsverzeichnis**  
+
 [1]  Wiederholung Modbus  
 
 [2]  Programm Temperatursensor  
@@ -42,7 +47,7 @@ Im ASCII-Modus beginnen Nachrichten mit einem vorangestellten Doppelpunkt, das E
 
 Die ersten zwei Bytes enthalten zwei ASCII-Zeichen, die die Adresse des Empfängers darstellen. Der auszuführende Befehl ist auf den nächsten zwei Bytes codiert. Über weitere n Zeichen folgen die Daten. Über das gesamte Telegramm (ohne Start- und Ende-Markierung) wird zur Fehlerprüfung ein LRC ausgeführt, dessen Paritätsdatenwort in den abschließenden zwei Zeichen untergebracht wird. Tritt während der Übertragung eines Frames eine Pause von > 1s auf, wird der Frame als Fehlerfall bewertet. Der Benutzer kann ein längeres Timeout konfigurieren.   
 
-
+ 
 #### **Datenmodell**
 
 **Discrete Inputs**
@@ -185,7 +190,8 @@ Kontrolle, ob beim Übertragen ein Fehler passiert ist. Es wird somit kontrollie
   82     
   83     // printf("Request richtig\n");
 ```
-**Kontrolle LRC**
+**Kontrolle LRC**  
+
 Alle Werte, angefangen beim Startbit werden in der for Schleife gezählt. Anschließend wird das Zweierkompliment der Zahl gebildet und gespeichert. Danach wird der Wert mit dem LRC mit dem Frame verglichen.
 ```
   84     uint8_t i, j;
