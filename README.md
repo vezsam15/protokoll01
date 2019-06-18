@@ -27,7 +27,7 @@
 
 Der Kommunikationsablauf beruht auf einem Server/Client Prinzip. Der Client (zum Beispiel ein PC) sendet einen Request zum Server (zum Beispiel ein Aktor oder Sensor). Dieser antworter mit einer Response.
 
-![Modbus](https://lms.at/dotlrn/classes/htl_elektrotechnik/610437.4AHME_LA1SX.18_19/xolrn/download/file/2148F16AC6F2E.symlink/038028026F2A2/en:D5C8F823BE5EE/modbus_transaction_error_free_png)
+
 ----------
 
 ### **Modbus ASCII:**
